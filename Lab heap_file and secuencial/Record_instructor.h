@@ -10,6 +10,7 @@ class Record_instructor{
         double salary;
     public:
         //Constructor
+        Record_instructor();
         Record_instructor(string,string,string,double);
         //Method to get the number of bytes in the record
         unsigned int size_record()const;
@@ -25,9 +26,33 @@ class Record_instructor{
         void set_name(string);
         void set_dept_name(string);
         void set_salary(double);
+        // friend ostream& operator <<(ostream &o,const Record_instructor&p){
+        //     o<<p.get_ID()<<" "<<p.get_name()<<" "<<p.get_dept_name()<<" "<<p.get_salary();
+        //     return o;
+        // }
+        string print();
         
 
 };
+Record_instructor::Record_instructor(){
+    //this condition define the all variables as not nulls and 
+    //inside the limis of length
+    // char ID[6];
+    //     char name[21];
+    //     char dept_name[21];
+    //     float salary;
+    // string ID,string name ,string dept_name,double salary
+    for(int i=0;i<6;i++)this->ID[i]=' ';
+    for(int i=0;i<21;i++)this->name[i]=' ';
+    for(int i=0;i<21;i++)this->dept_name[i]=' ';
+    this->salary=0;
+    
+    // this->ID="";
+    // this->name="";
+    // this->dept_name=" ";
+    // this->salary=0;
+    
+}
 Record_instructor::Record_instructor(string ID,string name ,string dept_name,double salary){
     //this condition define the all variables as not nulls and 
     //inside the limis of length
@@ -105,3 +130,13 @@ void Record_instructor::set_salary(double salary){
     }
 }
 
+string Record_instructor::print(){
+    string aux=this->ID;
+    aux+=" ";
+    aux+=this->name;
+    aux+=" ";
+    aux+=this->dept_name;
+    aux+=" ";
+    aux+=this->salary;
+    return aux;
+}
